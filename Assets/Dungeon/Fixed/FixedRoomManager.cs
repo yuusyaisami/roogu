@@ -8,7 +8,7 @@ using UnityEngine;
 public class FixedRoomManager : ScriptableObject
 {
     public List<FixedRoom> fixedRooms = new List<FixedRoom>(); // 固定部屋のリスト
-    Dungeon dungeon;
+    public Dungeon dungeon;
     public FixedRoomManager(Dungeon dungeon){
         this.dungeon = dungeon;
     }
@@ -19,8 +19,25 @@ public class FixedRoomManager : ScriptableObject
     /// <returns>選択されたFixedRoom、存在しない場合はnull</returns>
     public FixedRoom SelectFixedRoom(BSPNode node)
     {
+        if (node == null) {
+            Debug.LogError("Node is null in SelectFixedRoom");
+            return null;
+        }
+        else if(fixedRooms == null){
+            Debug.LogError("FixedRooms is null in SelectFixedRoom");
+            return null;
+        }
         // 対象ノードに収まる固定部屋をフィルタリング
-        if(dungeon.debug) Debug.Log(fixedRooms.Count);
+        if(dungeon.debug) Debug.Log(fixedRooms[0].areaType);
+        if(dungeon.debug){
+            Debug.Log(fixedRooms.Count);
+            Debug.Log(node.room.id);
+            Debug.Log(dungeon.areaTypes.Count);
+            Debug.Log(dungeon.areaTypes[node.room.id]);
+            Debug.Log(node.width);
+            Debug.Log(node.height);
+        }
+        if(dungeon.debug) Debug.Log(dungeon.areaTypes[node.room.id]);
         List<FixedRoom> suitableRooms = fixedRooms.FindAll(room => room.size.x <= node.width && room.size.y <= node.height && dungeon.areaTypes[node.room.id] == room.areaType);
 
         if (suitableRooms.Count == 0)

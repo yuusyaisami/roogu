@@ -74,6 +74,8 @@ public class Dungeon : MonoBehaviour
         // BSPツリーのルートノードを初期化
         root = new BSPNode(0, 0, width, height);
 
+        // fixedroom の初期化
+        fixedRoomManager.dungeon = this;
         // connectの初期化
         connect = new Connect(this);
         // DungeonUtilsのインスタンスを作成
@@ -92,8 +94,8 @@ public class Dungeon : MonoBehaviour
     void generateDungeon(){
         if(debug) Debug.Log("生成を開始する");
         recursiveSplit(root, 0); // 深度を0から開始
+        createRooms(root); // 部屋の作成と固定部屋の挿入をここで行う
         AssignAreaTypes(); // エリアタイプを割り当て
-        createRooms(root); // 部屋の作成
         // 廊下の接続方法をオプションで実行
         if(corridor_type == "direct") connect.rooms_direct(root);
         else if(corridor_type == "bsp") connect.rooms_bsp(root);
