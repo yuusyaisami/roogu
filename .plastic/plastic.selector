@@ -1,0 +1,4 @@
+repository "rogulite@macaronkunkun@cloud"
+  path "/"
+    br "/main"
+    co "/main"
