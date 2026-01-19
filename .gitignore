@@ -1,0 +1,75 @@
+############################
+# OS / editor noise
+############################
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+############################
+# .NET build outputs
+############################
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+*.log
+
+############################
+# Visual Studio
+############################
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.VC.db
+*.VC.VC.opendb
+
+############################
+# VS Code
+############################
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+############################
+# JetBrains Rider / ReSharper
+############################
+.idea/
+*.sln.iml
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+############################
+# NuGet / tooling
+############################
+# (通常はpackagesは使わないが一応)
+packages/
+# ローカルのツールキャッシュ等
+.nuget/
+
+############################
+# MonoGame Content Pipeline outputs
+############################
+# ビルド生成物（.xnb など）
+Content/bin/
+Content/obj/
+
+############################
+# Test / coverage (もし使うなら)
+############################
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+############################
+# Temporary / backups
+############################
+*.tmp
+*.bak
+*.swp
+*.swo
